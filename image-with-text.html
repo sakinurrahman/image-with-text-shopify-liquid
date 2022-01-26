@@ -1,0 +1,203 @@
+<div style="background: {{ section.settings.bg }};padding-top: {{ section.settings.pt }}px;padding-bottom: {{ section.settings.pb }}px;" class="custom__image_with_text">
+  <div class="page-width">
+    <div class="custom__image_with_text_inner">
+      <div class="ciwti_text">
+        <h3 class="ciwti_main_title ciwti_text_color">
+           {{ section.settings.title1 }}
+        </h3>
+         <h4 class="ciwti_sub_title ciwti_text_color">
+          {{ section.settings.title2 }}
+        </h4>
+       {{ section.settings.title3 }}
+        <a class="ciwti__button" href="{{ section.settings.btnurl }}">{{ section.settings.btntitle }}</a>
+      </div>
+      <div class="ciwti_image">
+        {% if section.settings.img %}
+         <img src="{{ section.settings.img | img_url: '800x' }}">
+        {% else %}
+        <img src="https://via.placeholder.com/728x434.png">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% schema %}
+  {
+    "name": "Custom - Image with text ",
+    "settings": [
+       {
+        "type": "range",
+        "min": 1,
+        "max":100,
+        "step": 1,
+        "default": 10,
+        "id": "pt",
+        "label": "Padding Top"
+       },
+     {
+        "type": "range",
+        "min": 1,
+        "max":100,
+        "step": 1,
+        "default": 10,
+        "id": "pb",
+        "label": "Padding Bottom"
+       },
+       {
+        "type": "color",
+        "default": "#fcfce5",
+        "id": "bg",
+        "label": "Background Color"
+       },
+        {
+        "type": "color",
+        "default": "#222",
+        "id": "textBg",
+        "label": "Text Color"
+        },
+       {
+        "type": "color",
+        "default": "#eddf00",
+        "id": "btnbg",
+        "label": "Button BG Color"
+       },
+      {
+        "type": "color",
+        "default": "#222",
+        "id": "btntext",
+        "label": "Button Text Color"
+       },
+
+
+      {
+        "type": "textarea",
+        "default": "Wipe Away Years Of Dirt, Grime, And Build Up",
+        "id": "title1",
+        "label": "Main title"
+       },
+       {
+        "type": "textarea",
+        "default": "If it doesn't work, then you don't pay! ",
+        "id": "title2",
+        "label": "Sub title"
+       },
+       {
+        "type": "richtext",
+        "default": "<p>Lemon Scrub is tough enough to erase years of grime and stains, yet gentle enough for virtually any surface. Get a deeper clean and brighter shine on your tiles, shower, glass, stovetops, ovens, pots and pans and more. Without the hard work.</p>",
+        "id": "title3",
+        "label": "Description"
+       },
+      {
+        "type": "text",
+        "default": "Shop Now",
+        "id": "btntitle",
+        "label": "Button Title"
+       },
+      {
+        "type": "url",
+        "id": "btnurl",
+        "label": "Button Url"
+       },
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Add Photo"
+       }
+
+     ],
+    "presets": [
+      {
+      "name": "Custom _ Image with Text",
+      "category": "Photo"
+     }
+    ]
+  }
+{% endschema %}
+
+<style>
+  
+  .ciwti_text_color, .custom__image_with_text_inner p {
+  color: {{ section.settings.textBg }};
+  
+  }
+  
+  .custom__image_with_text {
+	margin-top: -55px;
+}
+  
+ 
+   .custom__image_with_text_inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+      .ciwti_image img {
+	width: 90%;
+	margin: 0 auto;
+}
+  .ciwti_text {
+	order: 1;
+}
+  
+.ciwti_main_title.ciwti_text_color {
+	font-size: 30px;
+	line-height: 35px;
+	margin-bottom: 10px;
+}
+  .ciwti_sub_title.ciwti_text_color {
+	margin-bottom: 15px;
+	font-size: 18px;
+	line-height: 20px;
+}
+  
+.ciwti__button {
+	font-size: 16px !important;
+	text-transform: uppercase !important;
+	padding: 10px 18px !important;
+  background-color: {{ section.settings.btnbg }} !important;
+	margin-top: 5px;
+	display: inline-block;
+	font-weight: bold;
+	color: {{ section.settings.btntext }};
+}
+  
+    @media only screen and (min-width:990px) {
+  
+    .custom__image_with_text_inner {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ciwti_text {
+      flex-basis: 50%;
+      width: 50%;
+    }
+    .ciwti_image {
+      flex-basis: 50%;
+      width: 50%;
+    }
+    .ciwti_image img {
+	width: 70%;
+	margin: 0 auto;
+	display: block;
+}
+      .ciwti_text {
+	order: 0;
+}
+      .ciwti_main_title.ciwti_text_color {
+	font-size: 35px;
+	line-height: 42px;
+	margin-bottom: 14px;
+}
+  
+  }
+  
+  
+</style>
